@@ -1,0 +1,79 @@
+.story{
+    margin: 0 auto;
+    width: 75%;
+    font-size: $default-font-size;
+    background-color: ($color-white, 0.5);
+    padding: 6rem;
+    padding-left: 9rem;
+    border-radius: 3px;
+    box-shadow: 0 1rem 2rem rgba( $color-black,0.3);
+    transform: skewX(-12deg);
+
+    @include responde(tab-port){
+        width: 100%;
+        padding: 3rem;
+        padding-left: 7rem;
+    }
+
+    @include responde(phone){
+        transform: skewX(0deg);
+    }
+    
+//we have not applied the skew on direct children, because of transform is being used in on of the children
+    &__shape{
+        width: 15rem;
+        height: 15rem;
+        background-color: orangered;
+        float: left;
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        transform: translateX(-3rem) skewX(12deg);
+        position: relative;
+
+        @include responde(phone){
+            transform: translateX(-3rem) skewX(0deg);
+        }
+
+        &__img{
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1.4);
+            transition: all 0.5s;
+        }
+
+        &__caption{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, 20%);
+            opacity: 0;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 1.7rem;
+            color: $color-white;
+            transition: all 0.5s;
+        }
+    }
+
+    &__text{
+        text-align: left;
+        transform: skewX(12deg);
+        @include responde(phone){
+            transform: skewX(0deg);
+        }
+    }
+
+    &:hover &__shape__caption{
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+
+    &:hover &__shape__img{
+        transform: translate(-50%, -50%) scale(1);
+        filter: blur(3px) brightness(80%);
+    }
+}

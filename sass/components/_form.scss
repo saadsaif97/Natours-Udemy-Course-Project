@@ -1,0 +1,108 @@
+.form {
+    &__group{
+        font-size: inherit;
+        color: inherit;
+    }
+    &__input{
+        padding: 1.5rem 2rem;
+        border-radius: 3px;
+        border: none;
+        width: 90%;
+        border-bottom: 3px solid transparent;
+        display: block;
+        background-color: rgba($color-white, 0.5);
+        transition: all 0.3s;
+
+        @include responde(tab-port){
+            width: 100%;
+        }
+
+        &::-webkit-input-placeholder{
+            color: #999999;
+        }
+
+        &:focus{
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color-black, 0.3);
+        }
+
+        &:focus:invalid{
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+        &:focus:valid{
+            border-bottom: 3px solid $color-primary-dark;
+        }
+    }
+
+
+    &__label{
+        font-size: 1.2rem;
+        display: block;
+        padding: 0.5rem 2rem;
+        transition: all 0.3s;
+    }
+
+    &__input:placeholder-shown + &__label{
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
+    }
+
+    &__radio-group{
+        width: 49%;
+        display: inline-block;
+        cursor: pointer;
+
+        @include responde(tab-port){
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__radio-input{
+        display: none;
+        cursor: pointer;
+        
+    }
+
+    &__radio-label{
+        font-size: $default-font-size;
+        position: relative;
+        transform: translateX(3rem);
+        padding-left: 4rem;
+        color: inherit;
+        cursor: pointer;
+
+    }
+    &__radio-button{
+        width: 3rem;
+        height: 3rem;
+        border: 3px solid $color-primary;
+        display: inline-block;
+        border-radius: 50%;
+        position: absolute;
+        top: -0.5rem;
+        cursor: pointer;
+        left: 0;
+
+
+        &::after{
+            content: "";
+            display: block;
+            background-color: $color-primary;
+            width: 1.3rem;
+            height: 1.3rem;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            position: absolute;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+    }
+
+    &__radio-input:checked ~ &__radio-label &__radio-button::after{
+        opacity: 1;
+    }
+}

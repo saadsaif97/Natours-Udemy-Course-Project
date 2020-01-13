@@ -1,0 +1,60 @@
+.row{
+    max-width: $layout-width;
+    margin: 0 auto;
+
+    &:not(:last-child){
+    margin-bottom: $vertical-gutter;
+    @include responde(tab-port){
+        margin-bottom: $vertical-gutter-small;
+    }
+    }
+
+    @include responde(tab-port){
+        max-width: 50rem;
+        padding: 0 3rem;
+    }
+
+    color: $color-dark;
+    @include clearfix;
+
+    [class^="col-"]{
+        float: left;
+
+        &:not(:last-child){
+            margin-right: $horizontal-gutter;
+
+            @include responde(tab-port){
+                margin-bottom: $vertical-gutter-small;
+                margin-right: 0px;
+            }
+        }
+
+        @include responde(tab-port){
+            width: 100% !important;
+        }
+    }
+
+    .col-1-of-2{
+        width: calc( ( 100% - #{$horizontal-gutter} ) /2 );
+    }
+
+    .col-1-of-3{
+        width: calc( ( 100% - 2*#{$horizontal-gutter} ) /3 );
+    }
+
+    .col-1-of-4{
+        width: calc( ( 100% - 3*#{$horizontal-gutter} ) /4 );
+    }
+
+    .col-2-of-3{
+        width: calc( 2*( ( 100% - 2*#{$horizontal-gutter} ) /3 ) + (#{$horizontal-gutter}) );
+    }
+
+    .col-2-of-4{
+        width: calc( 2* (( 100% - 3*#{$horizontal-gutter} ) /4) + (#{$horizontal-gutter}) );
+    }  
+    
+    .col-3-of-4{
+        width: calc( 3* (( 100% - 3*#{$horizontal-gutter} ) /4) + 2*(#{$horizontal-gutter}) );
+    }    
+}

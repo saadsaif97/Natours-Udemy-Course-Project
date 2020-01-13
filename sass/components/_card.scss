@@ -1,0 +1,222 @@
+.card{
+
+    //Funtionality
+    font-size: 2.4rem;
+    position: relative;
+    height: 51rem;
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+//prespective is of the parent element
+//with the position absolute of child element, the parent should have the same height other-wise the taste will be gone
+
+    &__side{
+        backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        transition: all 0.8s ease-out;
+        height: 51rem;
+        width: 100%;
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        border-radius: 3px;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.3);
+
+
+        &--front{
+            color: $color-dark;
+            background-color: $color-white;
+            
+        }
+        &--back{
+            transform: rotateY(180deg);
+            color: $color-white;
+
+            &--1{
+                background-image: linear-gradient(to right bottom,$color-secondary-light, $color-secondary-dark );
+            }
+
+            &--2{
+                background-image: linear-gradient(to right bottom,$color-primary-light, $color-primary-dark );
+            }
+
+            &--3{
+                background-image: linear-gradient(to right bottom,$color-tertiary-light, $color-tertiary-dark );
+            }
+
+        }
+    }
+
+
+    &:hover &__side--front{
+        transform: rotateY(-180deg);
+    }
+
+    &:hover &__side--back{
+        transform: rotateY(0deg);
+    }
+
+    //front-side styling
+
+    &__picture{
+        height: 23rem;
+        background-size: cover;
+        background-blend-mode: screen;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        //clip path breaks the over-flow property, so we have to apply it manually
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        
+        &--1{
+            background-image: linear-gradient(to right bottom,$color-secondary-light, $color-secondary-dark ),url(../img/nat-5.jpg);
+        }
+        &--2{
+            background-image: linear-gradient(to right bottom,$color-primary-light, $color-primary-dark ),url(../img/nat-6.jpg);
+        }
+        &--3{
+            background-image: linear-gradient(to right bottom,$color-tertiary-light, $color-tertiary-dark ),url(../img/nat-7.jpg);
+        }
+    }
+
+
+    &__heading{
+        text-transform: uppercase;
+        font-size: 2.8rem;
+        font-weight: 700;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        text-align: right;
+        width: 70%;
+        color: $color-white;
+    }
+
+    &__heading--span{
+        padding: 0.5rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+
+        &--1{
+            background-image: linear-gradient(to right bottom, 
+            rgba($color-secondary-light, 0.85), 
+            rgba($color-secondary-dark, 0.85));
+
+        }
+
+        &--2{
+            background-image: linear-gradient(to right bottom, 
+            rgba($color-primary-light, 0.85), 
+            rgba($color-primary-dark, 0.85));
+
+        }
+
+        &--3{
+            background-image: linear-gradient(to right bottom, 
+            rgba($color-tertiary-light, 0.85), 
+            rgba($color-tertiary-dark, 0.85));
+
+        }
+    }
+
+    &__details{
+        ul{
+            font-size: $default-font-size;
+            list-style-type: none;
+            margin: 1rem auto 0 auto;
+            width: 80%;
+
+            li{
+                text-align: center;
+                padding: 1rem;
+                
+                &:not(:last-child){
+                    border-bottom: 1px solid #eee;
+                }
+            }
+        }
+    }
+
+    //back-side Styling
+
+    &__cta{
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }
+    &__price-box{
+        color: $color-white;
+        text-align: center;
+        margin-bottom: 5rem;
+    }
+    &__price-only{
+        text-transform: uppercase;
+        font-size: $default-font-size;
+        font-weight: 400;
+    }
+    &__price-value{
+        font-size: 6.4rem;
+        font-weight: 100;
+    }
+
+    
+    
+    
+    
+    @include responde(tab-port){
+            height: auto;
+            background-color: $color-white;
+            border-radius: 3px;
+            box-shadow: 0 1.5rem 4rem rgba($color-black, 0.3);
+            
+            &__side{
+              
+                height: auto;
+                width: 100%;
+                position: relative;
+                overflow: hidden;
+                top: 0;
+                left: 0;
+                box-shadow: none;
+
+
+                &--back{
+                    transform: rotateY(0deg);
+                    -webkit-clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+                    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+                }
+            }
+
+
+            &:hover &__side--front{
+                transform: rotateY(0deg);
+            }
+
+            &:hover &__side--back{
+                transform: rotateY(0deg);
+            }
+
+          
+
+            //back-side Styling
+
+            &__cta{
+                position: relative;
+                top:0%;
+                left:0%;
+                transform: translate(0);
+                width: 100%;
+                padding: 7rem 4rem 4rem 4rem;
+            }
+            &__price-box{
+                margin-bottom: 3rem;
+            }
+            &__price-value{
+                font-size: 4rem;
+            }
+        }
+
+}

@@ -1,0 +1,43 @@
+@mixin clearfix {
+    &::after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+
+//Media QUERY Manager
+/*
+0-600px        Phone
+600-900px      Tablet portrait
+900-1200px     Tablet landscape
+[1200-1800px]  where all the default styles are applied
+1800+          Big desktops
+
+$breakPoint argument choices:
+phone
+tab-port
+tab-land
+big-desktop
+
+ORDER to apply the media queires: Bese + typography > gerneral layout + grid > page layoutr > components
+
+1em =16px
+rem not behave as intended in many browsers, em is the mostly used unit for the media queries
+*/
+
+@mixin responde($breakPoint) {
+    @if $breakPoint==phone {
+        @media (max-width:37.5em){@content};  //600px
+    }
+    @if $breakPoint==tab-port {
+        @media (max-width:56.25em){@content};  //900px
+    }
+    @if $breakPoint==tab-land {
+        @media (max-width:75em){@content};  //1200px
+    }
+    @if $breakPoint==big-desktop {
+        @media (min-width:112.5em){@content};  //1800px
+    }
+}

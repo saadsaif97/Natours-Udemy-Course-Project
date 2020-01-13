@@ -1,0 +1,118 @@
+.popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color-black, 0.8);
+    z-index: 2000;
+    transition: all 0.3s;
+
+    opacity: 0;
+    visibility: hidden;
+    
+    
+    &__content{
+        width: 70%;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%) scale(0.5);
+        background-color: $color-white;
+        z-index: 2001;
+        border-radius: 3px;
+        @include clearfix;
+        display: flexbox;
+        overflow: hidden;
+        opacity: 0;
+        font-size: $default-font-size;
+        transition: all 0.3s 0.2s ease-in;
+    }
+
+    &__left{
+        width: 33.3333%;
+        float: left;
+        // display: table-cell;
+        @include responde(tab-port){
+            float: none;
+            width: 100%;
+        }
+    }
+
+    &__img{
+        display: block;
+        width: 100%;
+        @include responde(tab-port){
+            display: inline-block;
+            float: left;
+            width: 50%;
+            height: 75px;
+        }
+    }
+    &__right{
+        width: 66.6667%;
+        float: right;
+        padding: 5rem 2rem;
+        @include responde(tab-port){
+            width: 100%;
+            float: none;
+            font-size: 1.5rem;
+            line-height: 1.3;
+            padding: 3rem 1rem 1rem 1rem;
+        }
+    }
+    &__text{
+        -moz-column-count: 2;
+        -moz-column-gap: 4rem;
+        -moz-column-rule: 1px solid $color-primary-light;
+
+        column-count: 2;
+        column-gap: 4rem;
+        column-rule: 1px solid $color-primary-light;
+
+        @include responde(tab-port){
+            -moz-column-count: 2;
+            -moz-column-gap: 2rem;
+            -moz-column-rule: 1px solid $color-primary-light;
+    
+            column-count: 2;
+            column-gap: 2rem;
+            column-rule: 1px solid $color-primary-light;
+        }
+
+        -moz-hyphens: auto;
+        hyphens: auto;
+    }
+
+    &:target{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &:target &__content{
+        transform: translate(-50%,-50%) scale(1);
+        opacity: 1;
+    }
+
+    &__close{
+        &:link,
+        &:visited{
+        text-decoration: none;
+        position: absolute;
+        top: 2.5rem;
+        right: 2.5rem;
+        font-size: 3rem;
+        transition: all 0.3s;
+        @include responde(tab-port){
+            top: 1rem;
+            right: 1rem;
+            line-height: 1;
+        }
+        }
+
+        &:hover,
+        &:active{
+            color: $color-primary;
+        }
+    }
+}

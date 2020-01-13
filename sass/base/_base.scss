@@ -1,0 +1,36 @@
+//its a partial (juzwie) file, so starts with underscore
+//contains basic selecters like resets, styles for html and body selecters etc.
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    box-sizing: border-box;
+    padding: 3rem;
+
+    @include responde(tab-port){
+        padding: 0px;
+    }
+}
+
+html{
+    font-size: 62.5%; //1rem=10px  => 10px/16px=62.5%
+
+
+    @include responde(tab-land){ //isWidth<1200px?
+        font-size: 56.25%; //1rem=9px
+    }
+
+    @include responde(tab-port){ //isWidth<900px?
+        font-size: 50%; //1rem=8px
+    }
+
+    @include responde(big-desktop){
+        font-size: 75%; //1rem=12px
+    }
+}
